@@ -1,0 +1,29 @@
+{
+  "name": "projecti-seina-sovellus-back-end",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch src --exec babel-node src/index.js"
+  },
+  "author": "Teemu",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.24.0",
+    "@stylistic/eslint-plugin-js": "^4.2.0",
+    "cross-env": "^7.0.3",
+    "globals": "^16.0.0",
+    "nodemon": "^3.1.9",
+    "supertest": "^7.1.0"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.2"
+  }
+}
