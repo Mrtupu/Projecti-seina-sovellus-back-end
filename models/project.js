@@ -6,7 +6,14 @@ const projectSchema = new mongoose.Schema({
     codelanguage: { type: String, required: true },
     description: { type: String, required: true },
     status: { type: String, required: true },
-    members: { type: [String], required: true },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User' 
+    },
+    members: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User' 
+    },
     deadline: { type: Date, required: true },
 })
 

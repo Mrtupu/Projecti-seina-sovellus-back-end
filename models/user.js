@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 const { Transform } = require('supertest/lib/test');
-const project = require('./project');
 
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true },
     name: { type: String, required: true },
     passwordHash: { type: String, required: true },
     email: { type: String, required: true },
-    role: { type: String, required: true },
+    role: { type: String },
     projects: [
         {
             type: mongoose.Schema.Types.ObjectId,

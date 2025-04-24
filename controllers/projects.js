@@ -14,13 +14,17 @@ const getTokenFrom = request => {
 }
 
 projectRouter.get('/', async (request, response) => {
-    const projects = await Project.find({}).populate('user', { username: 1, name: 1 })
+    const projects = await Project.find({})
+        .populate('user', { username: 1, name: 1 })
+        .populate('members', { username: 1, name: 1 })
     response.json(projects)
 })
 
 projectRouter.get('/:id', async (request, response) => {
     const { id } = request.params
-    const project = await Project.findById(id).populate('user', { username: 1, name: 1 })
+    const project = await Project.findById(id)
+        .populate('user', { username: 1, name: 1 })
+        .populate('members', { username: 1, name: 1 })
     if (project) {
         response.json(project)
     } else {
@@ -58,7 +62,7 @@ projectRouter.post('/', async (request, response) => {
         codelanguage: body.codelanguage,
         description: body.description,
         status: body.status,
-        members: body.members,
+        user: user._id,
         deadline: body.deadline,
     })
 
