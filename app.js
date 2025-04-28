@@ -9,6 +9,7 @@ const middleware = require('./utils/middleware')
 const projectRouter = require('./controllers/projects')
 const userRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
+const messageRouter = require('./controllers/messages')
 
 mongoose.set('strictQuery', false)
 logger.info('Connecting to', config.MONGODB_URI)
@@ -20,10 +21,6 @@ mongoose.connect(config.MONGODB_URI)
         logger.error('Error connecting to MongoDB:', error.message)
     })
 
-// console.log('projectRouter', projectRouter)
-// console.log('userRouter', userRouter)
-// console.log('loginRouter', loginRouter)
-
 
 app.use(cors())
 app.use(express.static('dist'))
@@ -33,6 +30,7 @@ app.use(middleware.requestLogger)
 app.use('/api/projects', projectRouter)
 app.use('/api/users', userRouter)
 app.use('/api/login', loginRouter)
+app.use('/api/messages', messageRouter)
 
 if (process.env.NODE_ENV === 'test') {
     const testingRouter = require('./controllers/testing')
